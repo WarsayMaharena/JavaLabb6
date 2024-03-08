@@ -3,14 +3,6 @@ package Event;
 import java.util.PriorityQueue;
 import java.util.Comparator;
 
-/**
- * In this class, we will add and manage events so that they are triggered at
- * the right moment using a PriorityQueue.
- *
- * @author Jesper Frisk, Shahriar Chegini, Oscar Dahlberg, Folke Forshed.
- *
- */
-
 public class EventQueue {
 	private PriorityQueue<Event> eventQueue;
 
