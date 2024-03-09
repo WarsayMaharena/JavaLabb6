@@ -1,15 +1,21 @@
 package Event;
 
-import SimState.SimState;
+import SimState.*;
 
-public class Event {
-	
-	   protected SimState state;
-	   protected EventQueue eventQueue;
-	   
-	   public Event(SimState state, EventQueue eventqueue) {
-		   
-		   
-	   }
+abstract public class Event {
+	protected SimState state;
+	protected EventQueue eventQueue;
 
+	abstract public void doMe();
+
+	abstract public double getTime();
+
+	abstract public String getName();
+
+	abstract public Customer getCustomer();
+
+	public Event(SimState state, EventQueue eventQueue) {
+		this.eventQueue = eventQueue;
+		this.state = state;
+	}
 }
