@@ -1,3 +1,5 @@
+// Amadeus Färdig
+
 package Event;
 
 import java.util.PriorityQueue;
