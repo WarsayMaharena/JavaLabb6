@@ -1,7 +1,7 @@
 package Event;
 
-public class SimStart {
-	   private ShopClose closing; 
+public class SimStart extends Event {
+	   private CloseStore closing; 
 	   private Arrival arrival;
 	   
 	   private double closeTime;
