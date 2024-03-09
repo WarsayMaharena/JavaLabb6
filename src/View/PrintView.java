@@ -69,7 +69,7 @@ public class PrintView extends View {
 		System.out.println("2) Total tid " + store.getRegisters() + " kassor varit lediga: "
 				+ formatNumber(store.getRegisterFreeTime()).trim() + " te.");
 		System.out.println("   Genomsnittlig ledig kassatid: "
-				+ formatNumber(store.getRegisterFreeTime() / store.getRegisters()).trim() + " te (dvs"
+				+ formatNumber(store.getRegisterFreeTime() / store.getRegisters()).trim() + " te (dvs "
 				+ formatNumber(
 						(store.getRegisterFreeTime() / store.getRegisters()) / (store.getLastPaymentTime()) * 100)
 				+ "% av tiden från öppning tills sista kunden betalat).");
