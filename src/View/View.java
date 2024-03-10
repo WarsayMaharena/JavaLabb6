@@ -22,6 +22,8 @@ import State.Store;
  *              observera.
  * @param store En referens till butiken som denna vy kommer att presentera
  *              information om.
+ * 
+ * @author Amadeus Olofsson, Warsay Maharena, Hjalmar Norén
  */
 @SuppressWarnings("deprecation")
 public abstract class View implements Observer {
