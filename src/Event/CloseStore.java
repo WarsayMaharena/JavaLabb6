@@ -16,7 +16,7 @@ public class CloseStore extends Event {
 	@Override
 	public void doMe() {
 		state.update(this);
-		state.getStore().setIsOpen(false);
+		state.getStore().setOpen(false);
 	}
 
 	@Override
