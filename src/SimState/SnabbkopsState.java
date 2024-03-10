@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Amadeus Olofsson, Warsay Maharena, Hjalmar Norén
  */
 public class SnabbkopsState {
+
 	private boolean isOpen = false;
 	private final int maxCustomers;
 	private final int registers;
