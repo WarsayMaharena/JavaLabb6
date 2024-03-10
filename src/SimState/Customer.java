@@ -2,14 +2,14 @@
 
 package SimState;
 
-
-
-
 public class Customer {
 	private static int nextId = -1;
-    private int customerID;
-    private CustomerState state;
+	private int customerID;
+	private CustomerState state;
 
+	public enum CustomerState {
+		inStore, notInStore, turnedAway, lateCustomer
+	}
 
 	public Customer() {
 		this.customerID = ++nextId;
@@ -33,10 +33,6 @@ public class Customer {
 		StringBuilder sb = new StringBuilder();
 		sb.append(customerID);
 		return sb.toString();
-	}
-
-	public enum CustomerState {
-		inStore, notInStore, turnedAway, lateCustomer
 	}
 
 }
