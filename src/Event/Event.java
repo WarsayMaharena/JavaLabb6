@@ -1,3 +1,4 @@
+//Amadeus Färdig
 package Event;
 
 import SimState.*;
