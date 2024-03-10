@@ -1,5 +1,4 @@
-// Amadeus Färdig
-
+//Amadeus UPPDATERA CHANGEREGISTERAVAILABILITY I GITHUB
 package Event;
 
 import SimState.*;
@@ -19,14 +18,14 @@ public class Pay extends Event {
 		state.update(this);
 		state.getStore().addMoney();
 		state.getStore().removeCustomer(customer);
-		state.getStore().releaseRegister();
+		 state.getStore().changeRegisterAvailability(false);
 
-		if (!state.getStore().getFIFO().isEmpty()) {
-			Customer nextCustomer = state.getStore().getFIFO().poll();
+		if (!state.getStore().getRegisterLine().isEmpty()) {
+			Customer nextCustomer = state.getStore().getRegisterLine().poll();
 			double nextPayTime = this.time + state.getPayTime().next();
 			Pay nextPayEvent = new Pay(this.state, this.eventQueue, nextPayTime, nextCustomer);
 			eventQueue.addEvent(nextPayEvent);
-			state.getStore().occupyRegister();
+			state.getStore().changeRegisterAvailability(true);
 		}
 	}
 
