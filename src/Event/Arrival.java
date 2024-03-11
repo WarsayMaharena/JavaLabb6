@@ -1,54 +1,42 @@
 package Event;
 
-import SimState.Customer;
-import SimState.SimState;
-import SimState.Customer.*;
+import SimState.*;
 
+public class Arrival extends Event {
+	Pick pickEvent;
+	double time;
+	Customer customer;
 
-public class Arrival extends Event{
-	   Pick pickEvent;
-	   double time;
-	   Customer customer;
-	   
-	   
-	   public Arrival(SimState state, EventQueue eventqueue, double time){
-		   super(state,eventqueue);
-		   this.time = time;
-		   customer = state.getStore().createNewCustomer();
-	   }
-	   
-	   public void doMe() {
-		   
-		      state.update(this);
-		       
-		      this.state.getStore().addCustomer(customer);
-		      
-		      if(customer.getState() == CustomerState.inStore)
-		      {
-		         double pickTime = this.time + state.getPickTime().next();
-		         
-		         pickEvent = new Pick(this.state, this.eventQueue, pickTime);
-		         
-		         eventQueue.addEvent(pickEvent);
-		      }
-	   }
+	public Arrival(SimState state, EventQueue eventQueue, double time) {
+		super(state, eventQueue);
+		this.time = time;
+		customer = state.getStore().createNewCustomer();
+	}
 
-	@Override
+	public void doMe() {
+
+		state.update(this);
+
+		this.state.getStore().addCustomer(customer);
+
+		if (customer.getState() == Customer.CustomerState.inStore) {
+			double pickTime = this.time + state.getPickTime().next();
+
+			pickEvent = new Pick(this.state, this.eventQueue, customer, pickTime);
+
+			eventQueue.addEvent(pickEvent);
+		}
+	}
+
 	public double getTime() {
-		// TODO Auto-generated method stub
-		return 0;
+		return time;
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Customer getCustomer() {
-		// TODO Auto-generated method stub
-		return null;
+		return customer;
 	}
 
+	public String getName() {
+		return "Ankomst";
+	}
 }

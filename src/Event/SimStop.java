@@ -12,6 +12,7 @@ import SimState.SimState;
  * @author Amadeus Olofsson, Warsay Maharena, Hjalmar Norén
  */
 public class SimStop extends Event {
+	private double stoptime = 999.0;
 	private double time;
 
 	/**
@@ -22,7 +23,7 @@ public class SimStop extends Event {
 	 */
 	public SimStop(SimState state, EventQueue eventQueue) {
 		super(state, eventQueue);
-		this.time = 999.0; // Standardtid satt för att markera slutet på simuleringen.
+		this.time = stoptime; // Standardtid satt för att markera slutet på simuleringen.
 	}
 
 	/**

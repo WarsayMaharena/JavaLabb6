@@ -12,15 +12,14 @@ import java.util.ArrayList;
  * @author Amadeus Olofsson, Warsay Maharena, Hjalmar Norén
  */
 public class SnabbkopsState {
-
-	private boolean isOpen = false;
-	private final int maxCustomers;
-	private final int registers;
-	private final double closingTime;
+	private boolean isStoreOpen = false;
+	private final int maxStoreCustomers;
+	private final int numberOfRegisters;
+	private final double storeClosingTime;
 
 	private final ArrayList<Customer> customers = new ArrayList<>();
 
-	private final FIFO registerLine = new FIFO();
+	private final FIFO FIFOregisterLine = new FIFO();
 	private final CustomerFactory customerFactory = new CustomerFactory();
 
 	private int totalMoney = 0;
@@ -28,7 +27,7 @@ public class SnabbkopsState {
 	private double registerFreeTime = 0.0;
 	private double customerQueueTime = 0.0;
 	private int totalCustomersInQueue = 0;
-	private double lastPaymentTime = 0.0;
+	private double lastPayTime = 0.0;
 
 	/**
 	 * Skapar en ny instans av SnabbkopsState. Initierar snabbköpet med angivet
@@ -40,9 +39,9 @@ public class SnabbkopsState {
 	 * @param closingTime  Tiden då snabbköpet stänger.
 	 */
 	public SnabbkopsState(int maxCustomers, int registers, double closingTime) {
-		this.maxCustomers = maxCustomers;
-		this.registers = registers;
-		this.closingTime = closingTime;
+		this.maxStoreCustomers = maxCustomers;
+		this.numberOfRegisters = registers;
+		this.storeClosingTime = closingTime;
 		this.freeRegisters = registers;
 	}
 
@@ -51,8 +50,8 @@ public class SnabbkopsState {
 	 * 
 	 * @return true om snabbköpet är öppet, annars false.
 	 */
-	public boolean isOpen() {
-		return isOpen;
+	public boolean isStoreOpen() {
+		return isStoreOpen;
 	}
 
 	/**
@@ -60,8 +59,8 @@ public class SnabbkopsState {
 	 * 
 	 * @param isOpen true för att öppna snabbköpet, false för att stänga det.
 	 */
-	public void setOpen(boolean isOpen) {
-		this.isOpen = isOpen;
+	public void setStoreOpen(boolean isOpen) {
+		this.isStoreOpen = isOpen;
 	}
 
 	/**
@@ -70,7 +69,7 @@ public class SnabbkopsState {
 	 * @return Maximalt antal kunder.
 	 */
 	public int getMaxCustomers() {
-		return maxCustomers;
+		return maxStoreCustomers;
 	}
 
 	/**
@@ -79,7 +78,7 @@ public class SnabbkopsState {
 	 * @return Antalet kassor.
 	 */
 	public int getRegisters() {
-		return registers;
+		return numberOfRegisters;
 	}
 
 	/**
@@ -88,7 +87,7 @@ public class SnabbkopsState {
 	 * @return Stängningstiden.
 	 */
 	public double getClosingTime() {
-		return closingTime;
+		return storeClosingTime;
 	}
 
 	/**
@@ -133,7 +132,7 @@ public class SnabbkopsState {
 	 * @return Kölinjen som ett FIFO-objekt.
 	 */
 	public FIFO getRegisterLine() {
-		return registerLine;
+		return FIFOregisterLine;
 	}
 
 	/**
@@ -166,9 +165,9 @@ public class SnabbkopsState {
 	 * @param customer Kunden som ska läggas till.
 	 */
 	public void addCustomer(Customer customer) {
-		if (!isOpen) {
+		if (!isStoreOpen) {
 			customer.setState(Customer.CustomerState.lateCustomer);
-		} else if (getCustomersInStore() < maxCustomers) {
+		} else if (getCustomersInStore() < maxStoreCustomers) {
 			customer.setState(Customer.CustomerState.inStore);
 		} else {
 			customer.setState(Customer.CustomerState.turnedAway);
@@ -261,7 +260,7 @@ public class SnabbkopsState {
 	 * @return Tiden för den senaste betalningen.
 	 */
 	public double getLastPaymentTime() {
-		return lastPaymentTime;
+		return lastPayTime;
 	}
 
 	/**
@@ -270,7 +269,7 @@ public class SnabbkopsState {
 	 * @param lastPaymentTime Den nya tiden för den senaste betalningen.
 	 */
 	public void setLastPaymentTime(double lastPaymentTime) {
-		this.lastPaymentTime = lastPaymentTime;
+		this.lastPayTime = lastPaymentTime;
 	}
 
 }

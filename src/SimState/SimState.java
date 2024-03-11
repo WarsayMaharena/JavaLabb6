@@ -109,11 +109,9 @@ public class SimState extends Observable {
 	}
 
 	/**
-	 * Hämtar slumpgeneratorn för plocktiden.
-	 * <p>
-	 * Denna metod returnerar en slumpgenerator som används för att generera
-	 * slumpmässiga tider för hur länge kunder plockar varor.
-	 * </p>
+	 * Hämtar slumpgeneratorn för plocktiden. Denna metod returnerar en
+	 * slumpgenerator som används för att generera slumpmässiga tider för hur länge
+	 * kunder plockar varor.
 	 * 
 	 * @return En slumpgenerator för plocktiden.
 	 */

@@ -41,7 +41,7 @@ public class CloseStore extends Event {
 	@Override
 	public void doMe() {
 		state.update(this);
-		state.getStore().setOpen(false);
+		state.getStore().setStoreOpen(false);
 	}
 
 	/**

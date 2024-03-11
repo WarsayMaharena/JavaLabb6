@@ -110,7 +110,7 @@ public class PrintView extends View {
 		String customerInfo = state.getCurrentCustomer() != null
 				? String.valueOf(state.getCurrentCustomer().getCustomerID())
 				: "---";
-		String storeStatus = store.isOpen() ? "Ö" : "S";
+		String storeStatus = store.isStoreOpen() ? "Ö" : "S";
 
 		System.out.printf("%6s\t%-9s\t%4s\t%1s\t%3s\t%4s\t%1s\t%1s\t%2s\t%3s\t%5s\t%4s\t%s%n",
 				formatNumber(state.getCurrentTime(), 6), eventName, customerInfo, storeStatus, store.getFreeRegisters(),
