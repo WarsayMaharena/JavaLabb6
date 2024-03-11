@@ -51,7 +51,9 @@ public class SnabbkopsState {
 	 * @return true om snabbköpet är öppet, annars false.
 	 */
 	public boolean isStoreOpen() {
+		
 		return isStoreOpen;
+		
 	}
 
 	/**

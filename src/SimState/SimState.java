@@ -165,14 +165,29 @@ public class SimState extends Observable {
 		currentCustomer = thisEvent.getCustomer();
 
 		lastEventTime = currentTime;
+
 		currentTime = thisEvent.getTime();
+		
+		if(getStore().isStoreOpen()==false && getStore().getRegisterLine().isEmpty()==true && thisEvent.getName() != "Betalning") {
+			//System.out.println("HELLOOOO");
+			//snabbkopsstate.setRegisterFreeTime(lastEventTime);
+			
+		}
+		
+		if(getStore().isStoreOpen()==false && getStore().getRegisterLine().isEmpty()==true && thisEvent.getName() != "Betalning" && thisEvent.getName()=="Ankomst") {
+			//snabbkopsstate.setRegisterFreeTime(lastEventTime);
+			//System.out.println(lastEventTime);
+			
+		}
 
 		if (thisEvent.getClass() != SimStop.class) {
 			snabbkopsstate.setRegisterFreeTime(
 					snabbkopsstate.getRegisterFreeTime() + (timeBetweenEvent() * snabbkopsstate.getFreeRegisters()));
 			snabbkopsstate.setCustomerQueueTime(snabbkopsstate.getCustomerQueueTime()
 					+ (timeBetweenEvent() * snabbkopsstate.getRegisterLine().size()));
+			
 
+			
 			if (thisEvent.getClass() == Pay.class) {
 				snabbkopsstate.setLastPaymentTime(thisEvent.getTime());
 			}
@@ -180,10 +195,28 @@ public class SimState extends Observable {
 		} else {
 			snabbkopsstate.setRegisterFreeTime(snabbkopsstate.getRegisterFreeTime()
 					- ((lastEventTime - snabbkopsstate.getLastPaymentTime()) * snabbkopsstate.getFreeRegisters()));
+
+				
 		}
+		if(getStore().isStoreOpen()==false && getStore().getRegisterLine().isEmpty()==true && thisEvent.getName() != "Betalning" && thisEvent.getName()=="Ankomst") {
+			//snabbkopsstate.setRegisterFreeTime(lastEventTime);
+			//System.out.println(lastEventTime);
+			snabbkopsstate.setRegisterFreeTime(
+					snabbkopsstate.getRegisterFreeTime() - (timeBetweenEvent() * snabbkopsstate.getFreeRegisters()));
+			
+		}		
+
 
 		setChanged();
 		notifyObservers();
+		
+		if(getStore().isStoreOpen()==false && getStore().getRegisterLine().isEmpty()==true && thisEvent.getName() != "Betalning" && thisEvent.getName()=="Ankomst") {
+			//snabbkopsstate.setRegisterFreeTime(lastEventTime);
+			//System.out.println(lastEventTime);
+			snabbkopsstate.setRegisterFreeTime(
+					snabbkopsstate.getRegisterFreeTime() + (timeBetweenEvent() * snabbkopsstate.getFreeRegisters()));
+			
+		}
 	}
 
 	/**
