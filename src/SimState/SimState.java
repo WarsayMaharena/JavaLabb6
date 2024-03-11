@@ -198,7 +198,6 @@ public class SimState extends Observable {
 
 				
 		}
-		
 		if(getStore().isStoreOpen()==false && getStore().getRegisterLine().isEmpty()==true && thisEvent.getName() != "Betalning" && thisEvent.getName()=="Ankomst") {
 			//snabbkopsstate.setRegisterFreeTime(lastEventTime);
 			//System.out.println(lastEventTime);

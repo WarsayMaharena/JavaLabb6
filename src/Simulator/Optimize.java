@@ -24,7 +24,7 @@ public class Optimize {
 
 		Optimize optimize = new Optimize();
 
-		int o = 3;
+		int o = 2;
 		if (o == 2) {
 			System.out.println("Minsta antal kassor som ger minimalt antal missade: "
 					+ optimize.findOptimalNumberOfRegisters(K.SEED, K.M, K.END_TIME, K.LOW_COLLECTION_TIME,
