@@ -58,14 +58,32 @@ public class Arrival extends Event {
 		}
 	}
 
+	/**
+	 * Hämtar tiden för händelsen.
+	 * 
+	 * @return Tiden då händelsen inträffar.
+	 */
+	
 	public double getTime() {
 		return time;
 	}
+	
+	/**
+	 * Hämtar kunden associerad med händelsen.
+	 * 
+	 * @return Kunden som utför plockningen.
+	 */
 
 	public Customer getCustomer() {
 		return customer;
 	}
-
+	
+	/**
+	 * Hämtar händelsens namn.
+	 * 
+	 * @return En sträng som representerar händelsens namn.
+	 */
+	
 	public String getName() {
 		return "Ankomst";
 	}
